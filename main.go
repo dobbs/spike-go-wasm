@@ -41,4 +41,22 @@ func main() {
 		fmt.Println("Here's a cookie")
 	}
 
+	fmt.Println("Hello, Slices.  Let's show how to break your stuff.")
+
+	groupA := make([]string, 4, 8)
+	groupA[0] = "foo"
+	groupA[1] = "bar"
+	groupA[2] = "baz"
+	groupA[3] = "biz"
+
+	fmt.Printf("groupA before: %#v\n", groupA)
+
+	groupB := groupA[1:3]
+	fmt.Printf("groupB before: %#v\n", groupB)
+
+	groupB[1] = "BAZ!" //DANGER
+
+	fmt.Printf("groupA[3] changed: %#v\n", groupA)
+	fmt.Printf("groupB: %#v\n", groupB)
+
 }
