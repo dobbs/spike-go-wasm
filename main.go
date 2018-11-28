@@ -74,9 +74,49 @@ func helloSlices() {
 	}
 }
 
+type speaker interface {
+	speak()
+}
+
+type english struct{}
+
+type chinese struct{}
+
+func (english) speak() {
+	fmt.Println("Hello, World")
+}
+
+func (*chinese) speak() {
+	fmt.Println("你好世界")
+}
+
+func sayHello(sp speaker) {
+	sp.speak()
+}
+
+func helloInterfaces() {
+	fmt.Println("Hello interfaces")
+
+	var mouth speaker
+	var chatter english
+
+	mouth = chatter
+	mouth.speak()
+
+	var sifu chinese
+
+	mouth = &sifu
+	mouth.speak()
+
+	sayHello(english{})
+	sayHello(&english{})
+	sayHello(&chinese{})
+}
+
 func main() {
 	helloVariables()
 	helloPointers()
 	helloControlFlow()
 	helloSlices()
+	helloInterfaces()
 }
