@@ -8,7 +8,7 @@ type thing struct {
 	name  string
 }
 
-func main() {
+func helloVariables() {
 	fmt.Println("Hello, Variables")
 	p := thing{
 		id:    "random",
@@ -17,7 +17,9 @@ func main() {
 	}
 
 	fmt.Printf("%#v\n", p)
+}
 
+func helloPointers() {
 	fmt.Println("Hello, Pointers")
 	pointy := 20
 	fmt.Printf("%#v\t%#v\n", pointy, &pointy)
@@ -25,7 +27,9 @@ func main() {
 	pointypointy := &pointy
 	fmt.Printf("#v pointypointy: %#v\n", pointypointy)
 	fmt.Printf("address: %+v\nvalue: %+v\npoints:%+v\n", &pointypointy, pointypointy, *pointypointy)
+}
 
+func helloControlFlow() {
 	fmt.Println("Hello, Control Flow")
 	name := "Barney"
 	age := 32
@@ -40,7 +44,9 @@ func main() {
 	if age > 6 {
 		fmt.Println("Here's a cookie")
 	}
+}
 
+func helloSlices() {
 	fmt.Println("Hello, Slices.  Let's show how to break your stuff.")
 
 	groupA := make([]string, 4, 8)
@@ -59,4 +65,18 @@ func main() {
 	fmt.Printf("groupA[3] changed: %#v\n", groupA)
 	fmt.Printf("groupB: %#v\n", groupB)
 
+	fmt.Println("Hello again, Slices.  Iteration.")
+	for i, value := range groupA {
+		fmt.Printf("groupA[%d] = '%s'\n", i, value)
+	}
+	for i, value := range groupB {
+		fmt.Printf("groupB[%d] = '%s'\n", i, value)
+	}
+}
+
+func main() {
+	helloVariables()
+	helloPointers()
+	helloControlFlow()
+	helloSlices()
 }
